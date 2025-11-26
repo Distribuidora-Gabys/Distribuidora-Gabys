@@ -1,9 +1,0 @@
-[
-    {
-        "codigo": "SH001",
-        "nombre": "Jabon Dove",
-        "cantidad": 0,
-        "tipo": "aseo personal",
-        "mensaje": "El producto 'Jabon Dove' está por debajo del stock mínimo"
-    }
-]
