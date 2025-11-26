@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Flujo de Productos{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="titulo">Flujo de Productos</h2>
+
+    <div class="card-menu">
+        <a href="{{ url_for('flujo_accion', accion='venta') }}" class="btn-menu">
+            🛒 <span>Registrar Venta</span>
+        </a>
+        <a href="{{ url_for('flujo_accion', accion='compra') }}" class="btn-menu">
+            📦 <span>Registrar Compra</span>
+        </a>
+        <a href="{{ url_for('flujo_accion', accion='devolucion') }}" class="btn-menu">
+            ↩️ <span>Registrar Devolución</span>
+        </a>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn-volver">⬅️ Volver al menú principal</a>
+</div>
+{% endblock %}
