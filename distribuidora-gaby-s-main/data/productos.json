@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "Shampoo",
+        "codigo": "SH002",
+        "cantidad": 18,
+        "precio": 15000.0,
+        "tipo": "aseo personal"
+    },
+    {
+        "nombre": "Detergente",
+        "codigo": "DT002",
+        "cantidad": 47,
+        "precio": 10.0,
+        "tipo": "hogar"
+    },
+    {
+        "nombre": "Jabon Dove",
+        "codigo": "SH001",
+        "cantidad": 0,
+        "precio": 100.0,
+        "tipo": "aseo personal"
+    }
+]

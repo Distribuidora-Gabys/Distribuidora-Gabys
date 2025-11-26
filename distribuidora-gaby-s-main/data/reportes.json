@@ -1,0 +1,26 @@
+{
+  "total_productos": 50,
+  "promedio_precio": 12176.0,
+  "promedio_cantidad": 23.8,
+  "producto_mas_costoso": {
+    "nombre": "Protector Solar Nivea",
+    "codigo": "PS027",
+    "precio": 28500
+  },
+  "producto_mas_barato": {
+    "nombre": "Paño Multiusos",
+    "codigo": "PM019",
+    "precio": 2500
+  },
+  "producto_con_mas_stock": {
+    "nombre": "Toalla Higiénica Nosotras",
+    "codigo": "TH009",
+    "cantidad": 60
+  },
+  "producto_con_menos_stock": {
+    "nombre": "Jabón Líquido Eucerin",
+    "codigo": "JL043",
+    "cantidad": 7
+  },
+  "valor_total_inventario": 608800
+}

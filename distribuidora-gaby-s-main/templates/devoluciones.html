@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Devoluciones{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="titulo">Historial de Devoluciones</h2>
+
+    {% if devoluciones %}
+    <form method="post" class="form-eliminar-todo">
+        <button type="submit" name="eliminar_todas" class="btn-peligro">🗑️ Eliminar todas</button>
+    </form>
+
+    <div class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th><th>Código</th><th>Cantidad</th><th>Tipo</th><th>Descripción</th><th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for d in devoluciones %}
+                <tr>
+                    <td>{{ d.nombre }}</td>
+                    <td>{{ d.codigo }}</td>
+                    <td>{{ d.cantidad }}</td>
+                    <td>{{ d.tipo }}</td>
+                    <td>{{ d.descripcion }}</td>
+                    <td>
+                        <form method="post" class="inline-form">
+                            <input type="hidden" name="codigo" value="{{ d.codigo }}">
+                            <button type="submit" class="btn-mini-peligro">❌</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="texto-vacio">No hay devoluciones registradas.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="btn-volver">⬅️ Volver al menú principal</a>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Productos{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="titulo">📦 Gestión de Productos</h2>
+
+    <div class="acciones-superiores">
+        <a href="{{ url_for('index') }}" class="btn-volver">🏠 Volver al Menú Principal</a>
+    </div>
+
+    <div class="form-filtros">
+        <form method="get" action="{{ url_for('productos') }}">
+            <input type="text" name="q" class="input-text" placeholder="Buscar por nombre o código..." value="{{ request.args.get('q', '') }}">
+            <select name="tipo" class="input-select">
+                <option value="">Todos los tipos</option>
+                <option value="aseo personal" {% if request.args.get('tipo') == 'aseo personal' %}selected{% endif %}>Aseo Personal</option>
+                <option value="hogar" {% if request.args.get('tipo') == 'hogar' %}selected{% endif %}>Hogar</option>
+                <option value="otros" {% if request.args.get('tipo') == 'otros' %}selected{% endif %}>Otros</option>
+            </select>
+            <button type="submit" class="btn-buscar">🔍 Buscar</button>
+            <a href="{{ url_for('nuevo_producto') }}" class="btn-mini">➕ Nuevo Producto</a>
+        </form>
+    </div>
+
+    {% if productos %}
+    <div class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in productos %}
+                <tr>
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.codigo }}</td>
+                    <td>{{ p.cantidad }}</td>
+                    <td>${{ "%.2f"|format(p.precio) }}</td>
+                    <td>{{ p.tipo }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_producto', codigo=p.codigo) }}" class="btn-mini">✏️ Editar</a>
+                        <form action="{{ url_for('eliminar_producto', codigo=p.codigo) }}" method="POST" style="display:inline;" onsubmit="return confirmarEliminar('{{ p.nombre }}');">
+                            <button type="submit" class="btn-mini-peligro">🗑️ Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="texto-vacio">No hay productos registrados.</p>
+    {% endif %}
+</div>
+
+<script>
+function confirmarEliminar(nombre) {
+    return confirm(`¿Seguro que deseas eliminar el producto "${nombre}"?`);
+}
+</script>
+{% endblock %}
